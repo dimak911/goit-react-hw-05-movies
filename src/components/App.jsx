@@ -1,19 +1,24 @@
+import { useEffect, useState } from 'react';
 import { Box } from 'components/Box';
 import { GlobalStyle } from './GlobalStyle';
+import { getTrending } from 'services/movie-api';
+import { MoviesGallery } from './MoviesGallery/MoviesGallery';
 
 export const App = () => {
+  const [trendingMovies, setTrendingMovies] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const trending = await getTrending();
+      setTrendingMovies(trending.data.results);
+    })();
+  }, []);
+
   return (
     <>
       <GlobalStyle />
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        height="100vh"
-        color="white"
-        bg="#2a2a2a"
-      >
-        React template
+      <Box>
+        <MoviesGallery trendingMovies={trendingMovies} />
       </Box>
     </>
   );
