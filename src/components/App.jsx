@@ -1,25 +1,46 @@
 import { useEffect, useState } from 'react';
-import { Box } from 'components/Box';
+import { Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyle';
-import { getTrending } from 'services/movie-api';
+import { getTrending, searchMovies } from 'services/movie-api';
 import { MoviesGallery } from './MoviesGallery/MoviesGallery';
+import { Container, Header, Link } from './App.styled';
 
 export const App = () => {
-  const [trendingMovies, setTrendingMovies] = useState([]);
+  const [trendingMovies, setTrendingMovies] = useState(() => []);
+  const [searchValue, setSearchValue] = useState(() => '');
 
   useEffect(() => {
     (async () => {
-      const trending = await getTrending();
-      setTrendingMovies(trending.data.results);
+      setTrendingMovies(await getTrending());
     })();
   }, []);
+
+  useEffect(() => {
+    if (!searchValue) {
+      return;
+    }
+
+    (async () => {
+      const foundMovies = await searchMovies(searchValue);
+      console.log(foundMovies);
+    })();
+  }, [searchValue]);
 
   return (
     <>
       <GlobalStyle />
-      <Box>
-        <MoviesGallery trendingMovies={trendingMovies} />
-      </Box>
+      <Container>
+        <Header>
+          <Link to="/">Home</Link>
+          <Link to="/movies">Movies</Link>
+        </Header>
+        <Routes>
+          <Route
+            path="/"
+            element={<MoviesGallery trendingMovies={trendingMovies} />}
+          ></Route>
+        </Routes>
+      </Container>
     </>
   );
 };

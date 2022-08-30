@@ -1,11 +1,22 @@
-import { Box } from 'components/Box';
+// import { Box } from 'components/Box';
+import { Image, Card, ImageWrapper, ContentWrapper } from './MovieItem.styled';
 
-export const MovieItem = ({ movie: { title, name, overview } }) => {
+export const MovieItem = ({
+  movie: { title, name, poster_path, vote_average },
+}) => {
   return (
-    <Box p={3} mb={3} bg="lightgrey">
-      <p>Title: {title || name}</p>
-      <p>Overview: {overview}</p>
-    </Box>
+    <Card href="#">
+      <ImageWrapper>
+        <Image
+          src={'https://image.tmdb.org/t/p/w500' + poster_path}
+          alt={title}
+        />
+      </ImageWrapper>
+      <ContentWrapper>
+        <p>{title || name}</p>
+        <p>Rating: {vote_average.toFixed(2)}</p>
+      </ContentWrapper>
+    </Card>
   );
 };
 
@@ -29,3 +40,5 @@ export const MovieItem = ({ movie: { title, name, overview } }) => {
 // "video": false,
 // "vote_average": 6.649,
 // "vote_count": 291
+
+// https://image.tmdb.org/t/p/w500
