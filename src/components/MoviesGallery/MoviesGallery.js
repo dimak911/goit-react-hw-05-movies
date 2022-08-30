@@ -1,6 +1,7 @@
 import { MovieItem } from '../MovieItem/MovieItem';
-import { Section, Heading } from './MoviesGallery.styled';
+import { Heading } from './MoviesGallery.styled';
 import { Box } from 'components/Box';
+import { Section } from 'components/Section/Section';
 
 export const MoviesGallery = ({ trendingMovies }) => {
   return (
@@ -12,7 +13,6 @@ export const MoviesGallery = ({ trendingMovies }) => {
         gridTemplateColumns="1fr 1fr 1fr 1fr 1fr"
         gridGap="20px"
         gridAutoRows="auto"
-        // gridAutoColumns="auto"
       >
         {trendingMovies.map(movie => (
           <li key={movie.id}>

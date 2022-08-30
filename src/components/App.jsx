@@ -3,7 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyle';
 import { getTrending, searchMovies } from 'services/movie-api';
 import { MoviesGallery } from './MoviesGallery/MoviesGallery';
-import { Container, Header, Link } from './App.styled';
+import { Movies } from '../pages/Movies';
+import { SharedLayout } from './SharedLayout/SharedLayout';
 
 export const App = () => {
   const [trendingMovies, setTrendingMovies] = useState(() => []);
@@ -26,21 +27,25 @@ export const App = () => {
     })();
   }, [searchValue]);
 
+  const onSearchMovie = value => {
+    setSearchValue(value);
+  };
+
   return (
     <>
       <GlobalStyle />
-      <Container>
-        <Header>
-          <Link to="/">Home</Link>
-          <Link to="/movies">Movies</Link>
-        </Header>
-        <Routes>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
           <Route
-            path="/"
+            index
             element={<MoviesGallery trendingMovies={trendingMovies} />}
           ></Route>
-        </Routes>
-      </Container>
+          <Route
+            path="movies"
+            element={<Movies onSearchMovie={onSearchMovie} />}
+          ></Route>
+        </Route>
+      </Routes>
     </>
   );
 };
