@@ -1,11 +1,16 @@
 // import { Box } from 'components/Box';
-import { Image, Card, ImageWrapper, ContentWrapper } from './MovieItem.styled';
+import {
+  Image,
+  ImageWrapper,
+  ContentWrapper,
+  Rating,
+} from './MovieItem.styled';
 
 export const MovieItem = ({
-  movie: { title, name, poster_path, vote_average },
+  movie: { title, poster_path, vote_average: rating },
 }) => {
   return (
-    <Card href="#">
+    <>
       <ImageWrapper>
         <Image
           src={'https://image.tmdb.org/t/p/w500' + poster_path}
@@ -13,10 +18,13 @@ export const MovieItem = ({
         />
       </ImageWrapper>
       <ContentWrapper>
-        <p>{title || name}</p>
-        <p>Rating: {vote_average.toFixed(2)}</p>
+        <p>{title}</p>
+        <p>
+          Rating:{' '}
+          <Rating rating={rating.toFixed(2)}>{rating.toFixed(2)}</Rating>
+        </p>
       </ContentWrapper>
-    </Card>
+    </>
   );
 };
 

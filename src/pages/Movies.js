@@ -1,3 +1,4 @@
+// import { Outlet } from 'react-router-dom';
 import { Section } from 'components/Section/Section';
 
 export const Movies = ({ onSearchMovie }) => {

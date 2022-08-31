@@ -1,12 +1,22 @@
+import { useEffect, useState } from 'react';
+import { getTrending } from 'services/movie-api';
 import { MovieItem } from '../MovieItem/MovieItem';
-import { Heading } from './MoviesGallery.styled';
+import { Heading, Card } from './MoviesGallery.styled';
 import { Box } from 'components/Box';
 import { Section } from 'components/Section/Section';
 
-export const MoviesGallery = ({ trendingMovies }) => {
+export const MoviesGallery = () => {
+  const [trendingMovies, setTrendingMovies] = useState(() => []);
+
+  useEffect(() => {
+    (async () => {
+      setTrendingMovies(await getTrending());
+    })();
+  }, []);
+
   return (
     <Section>
-      <Heading>Today Trending Movies</Heading>
+      <Heading>Trending today</Heading>
       <Box
         as="ul"
         display="grid"
@@ -16,7 +26,9 @@ export const MoviesGallery = ({ trendingMovies }) => {
       >
         {trendingMovies.map(movie => (
           <li key={movie.id}>
-            <MovieItem movie={movie} />
+            <Card to={`movies/${movie.id}`}>
+              <MovieItem movie={movie} />
+            </Card>
           </li>
         ))}
       </Box>
