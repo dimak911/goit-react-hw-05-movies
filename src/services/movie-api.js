@@ -33,3 +33,24 @@ export const getMovieById = async id => {
   });
   return foundMovie.data;
 };
+
+export const getMovieCreditsById = async id => {
+  const foundMovie = await axios.get(`movie/${id}/credits`, {
+    params: {
+      api_key: process.env.REACT_APP_MOVIES_API_KEY,
+      language: 'en-US',
+    },
+  });
+  return foundMovie.data;
+};
+
+export const getReviewsByMovieId = async (id, page = 1) => {
+  const foundMovie = await axios.get(`movie/${id}/reviews`, {
+    params: {
+      api_key: process.env.REACT_APP_MOVIES_API_KEY,
+      language: 'en-US',
+      page,
+    },
+  });
+  return foundMovie.data.results;
+};

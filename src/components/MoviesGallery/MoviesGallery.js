@@ -20,7 +20,7 @@ export const MoviesGallery = () => {
       <Box
         as="ul"
         display="grid"
-        gridTemplateColumns="1fr 1fr 1fr 1fr 1fr"
+        gridTemplateColumns="repeat(5, 1fr)"
         gridGap="20px"
         gridAutoRows="auto"
       >

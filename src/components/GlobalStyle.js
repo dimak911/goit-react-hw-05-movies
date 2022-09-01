@@ -23,4 +23,12 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
   }
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  p { 
+    margin-bottom: 10px;
+  }
 `;

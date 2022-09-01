@@ -13,7 +13,11 @@ export const MovieItem = ({
     <>
       <ImageWrapper>
         <Image
-          src={'https://image.tmdb.org/t/p/w500' + poster_path}
+          src={
+            poster_path
+              ? 'https://image.tmdb.org/t/p/w500' + poster_path
+              : 'https://dummyimage.com/216x361/000/fff&text=No+poster'
+          }
           alt={title}
         />
       </ImageWrapper>

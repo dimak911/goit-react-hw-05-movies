@@ -2,6 +2,7 @@ import { Outlet, useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Section } from 'components/Section/Section';
 import { getMovieById } from 'services/movie-api';
+import { Box } from 'components/Box';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
@@ -17,14 +18,36 @@ export const MovieDetails = () => {
     <>
       {movie && (
         <Section>
-          <img
-            src={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
-            alt={movie.title}
-            width="200"
-          />
-          <p>Title: {movie.title}</p>
-          <Link to="cast">Cast</Link>
-          <Link to="reviews">Reviews</Link>
+          <button type="button">Go back</button>
+          <Box display="flex" gridGap={4} mb={5}>
+            <Box width="400px">
+              <img
+                src={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
+                alt={movie.title}
+              />
+            </Box>
+            <div>
+              <h1>
+                {movie.title} <span>({movie.release_date.slice(0, 4)})</span>
+              </h1>
+              <h3>Overview</h3>
+              <p>{movie.overview}</p>
+              <p>User score: {(movie.vote_average / 10) * 100}%</p>
+              <h4>Genres</h4>
+              <p>{movie.genres.map(({ name }) => name).join(', ')}</p>
+            </div>
+          </Box>
+          <div>
+            <h4>Additional information</h4>
+            <ul>
+              <li>
+                <Link to="cast">Cast</Link>
+              </li>
+              <li>
+                <Link to="reviews">Reviews</Link>
+              </li>
+            </ul>
+          </div>
           <Outlet />
         </Section>
       )}
