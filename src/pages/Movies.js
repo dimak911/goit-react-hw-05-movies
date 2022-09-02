@@ -1,16 +1,14 @@
-// import { Outlet } from 'react-router-dom';
+import { useState } from 'react';
+import { MoviesGallery } from 'components/MoviesGallery/MoviesGallery';
 import { Section } from 'components/Section/Section';
+import { SearchInput } from 'components/SearchInput/SearchInput';
 
-export const Movies = ({ onSearchMovie }) => {
+export const Movies = () => {
+  const [movies, setMovies] = useState(null);
   return (
     <Section>
-      <label>
-        Search movie
-        <input></input>
-        <button type="submit" onSubmit={onSearchMovie}>
-          Search
-        </button>
-      </label>
+      <SearchInput setMovies={setMovies} />
+      {movies && <MoviesGallery movies={movies} />}
     </Section>
   );
 };

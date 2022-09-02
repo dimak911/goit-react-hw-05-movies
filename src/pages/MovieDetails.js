@@ -18,7 +18,9 @@ export const MovieDetails = () => {
     <>
       {movie && (
         <Section>
-          <button type="button">Go back</button>
+          <Link to="/">
+            <button type="button">Go back</button>
+          </Link>
           <Box display="flex" gridGap={4} mb={5}>
             <Box width="400px">
               <img

@@ -11,7 +11,7 @@ export const getTrending = async () => {
   return trendingData.data.results;
 };
 
-export const searchMovies = async movie => {
+export const searchMoviesByName = async movie => {
   const foundMovies = await axios.get('search/movie', {
     params: {
       api_key: process.env.REACT_APP_MOVIES_API_KEY,
