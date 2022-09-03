@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import { Box } from 'components/Box';
 import { MovieItem } from '../MovieItem/MovieItem';
@@ -22,4 +23,8 @@ export const MoviesGallery = ({ movies }) => {
       ))}
     </Box>
   );
+};
+
+MoviesGallery.propTypes = {
+  movies: PropTypes.array.isRequired,
 };

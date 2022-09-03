@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -54,4 +55,8 @@ export const SearchInput = ({ setMovies }) => {
       <Error>{errors.search?.message}</Error>
     </>
   );
+};
+
+SearchInput.propTypes = {
+  setMovies: PropTypes.func.isRequired,
 };

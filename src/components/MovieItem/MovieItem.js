@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   Image,
   ImageWrapper,
@@ -29,4 +30,12 @@ export const MovieItem = ({
       </ContentWrapper>
     </>
   );
+};
+
+MovieItem.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    poster_path: PropTypes.string,
+    vote_average: PropTypes.number,
+  }).isRequired,
 };
