@@ -11,7 +11,7 @@ export const Link = styled(NavLink)`
   }
   &.active {
     height: 50px;
-    border-radius: 10%;
+    border-radius: 10px;
     background-color: lightslategrey;
     box-shadow: inset 0px 5px 5px black;
     color: #61dafb;

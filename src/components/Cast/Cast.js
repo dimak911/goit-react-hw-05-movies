@@ -2,6 +2,7 @@ import { Box } from 'components/Box';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieCreditsById } from 'services/movie-api';
+import { Img } from './Cast.styled';
 
 export const Cast = () => {
   const { movieId } = useParams();
@@ -23,7 +24,7 @@ export const Cast = () => {
       {cast &&
         cast.slice(0, 20).map(({ id, name, character, profile_path }) => (
           <Box as="li" key={id} width="200px">
-            <img
+            <Img
               src={
                 profile_path
                   ? 'https://image.tmdb.org/t/p/w500' + profile_path
@@ -31,7 +32,9 @@ export const Cast = () => {
               }
               alt={name}
             />
-            <p>{name}</p>
+            <p>
+              <b>{name}</b>
+            </p>
             <p>Character: {character}</p>
           </Box>
         ))}

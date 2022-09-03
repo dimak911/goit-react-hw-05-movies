@@ -31,4 +31,8 @@ export const GlobalStyle = createGlobalStyle`
   p { 
     margin-bottom: 10px;
   }
+
+  a { 
+    text-decoration: none;
+  }
 `;

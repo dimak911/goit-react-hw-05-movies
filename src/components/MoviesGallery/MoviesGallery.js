@@ -1,8 +1,10 @@
+import { useLocation } from 'react-router-dom';
+import { Box } from 'components/Box';
 import { MovieItem } from '../MovieItem/MovieItem';
 import { Card } from './MoviesGallery.styled';
-import { Box } from 'components/Box';
 
 export const MoviesGallery = ({ movies }) => {
+  const location = useLocation();
   return (
     <Box
       as="ul"
@@ -13,7 +15,7 @@ export const MoviesGallery = ({ movies }) => {
     >
       {movies.map(movie => (
         <li key={movie.id}>
-          <Card to={`/movies/${movie.id}`}>
+          <Card to={`/movies/${movie.id}`} state={{ from: location }}>
             <MovieItem movie={movie} />
           </Card>
         </li>

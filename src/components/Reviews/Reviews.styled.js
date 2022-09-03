@@ -1,24 +1,19 @@
 import styled from 'styled-components';
 
-export const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+export const ContentBox = styled.div`
+  background-color: wheat;
+  border-radius: 10px;
+  padding: 20px;
 `;
 
-export const ImageWrapper = styled.div`
-  display: block;
-  height: 351px;
-`;
-
-export const ContentWrapper = styled.div`
-  padding: 15px;
-  p:first-child {
-    margin-bottom: 10px;
-  }
+export const Content = styled.p`
+  text-indent: 50px;
 `;
 
 export const Rating = styled.span`
+  display: inline-block;
+  min-width: 30px;
+  text-align: center;
   padding: 5px;
   background-color: ${({ rating }) => {
     if (rating > 6) {

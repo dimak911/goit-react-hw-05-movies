@@ -1,10 +1,21 @@
-import { Outlet, useParams, Link } from 'react-router-dom';
+import { Outlet, useParams, Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Section } from 'components/Section/Section';
 import { getMovieById } from 'services/movie-api';
 import { Box } from 'components/Box';
+import { IoMdArrowRoundBack } from 'react-icons/io';
+import {
+  Btn,
+  Heading1,
+  Heading3,
+  Heading4,
+  Img,
+  StyledLink,
+} from './MovieDetails.styled';
 
 export const MovieDetails = () => {
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/movies';
   const { movieId } = useParams();
   const [movie, setMovie] = useState(() => null);
 
@@ -18,37 +29,43 @@ export const MovieDetails = () => {
     <>
       {movie && (
         <Section>
-          <Link to="/">
-            <button type="button">Go back</button>
+          <Link to={backLinkHref}>
+            <Btn type="button">
+              <IoMdArrowRoundBack />
+              Go back
+            </Btn>
           </Link>
-          <Box display="flex" gridGap={4} mb={5}>
-            <Box width="400px">
-              <img
+          <Box display="flex" gridGap={4} mb={4}>
+            <Box flexBasis="300px" flexGrow="0" flexShrink="0">
+              <Img
                 src={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
                 alt={movie.title}
               />
             </Box>
             <div>
-              <h1>
+              <Heading1>
                 {movie.title} <span>({movie.release_date.slice(0, 4)})</span>
-              </h1>
-              <h3>Overview</h3>
+              </Heading1>
+              <Heading3>Overview</Heading3>
               <p>{movie.overview}</p>
-              <p>User score: {(movie.vote_average / 10) * 100}%</p>
-              <h4>Genres</h4>
+              <p>
+                <b>User score: </b>
+                {((movie.vote_average / 10) * 100).toFixed(2)}%
+              </p>
+              <Heading4>Genres:</Heading4>
               <p>{movie.genres.map(({ name }) => name).join(', ')}</p>
             </div>
           </Box>
           <div>
-            <h4>Additional information</h4>
-            <ul>
+            <Heading4>Additional information</Heading4>
+            <Box as="ul" display="flex" gridGap={3}>
               <li>
-                <Link to="cast">Cast</Link>
+                <StyledLink to="cast">Cast</StyledLink>
               </li>
               <li>
-                <Link to="reviews">Reviews</Link>
+                <StyledLink to="reviews">Reviews</StyledLink>
               </li>
-            </ul>
+            </Box>
           </div>
           <Outlet />
         </Section>
