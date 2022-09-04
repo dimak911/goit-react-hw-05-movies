@@ -6,9 +6,7 @@ import {
   Rating,
 } from './MovieItem.styled';
 
-export const MovieItem = ({
-  movie: { title, poster_path, vote_average: rating },
-}) => {
+const MovieItem = ({ movie: { title, poster_path, vote_average: rating } }) => {
   return (
     <>
       <ImageWrapper>
@@ -39,3 +37,5 @@ MovieItem.propTypes = {
     vote_average: PropTypes.number,
   }).isRequired,
 };
+
+export default MovieItem;

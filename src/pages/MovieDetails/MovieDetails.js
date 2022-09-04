@@ -1,6 +1,6 @@
 import { Outlet, useParams, Link, useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { Section } from 'components/Section/Section';
+import { useState, useEffect, Suspense } from 'react';
+import Section from 'components/Section/Section';
 import { getMovieById } from 'services/movie-api';
 import { Box } from 'components/Box';
 import { IoMdArrowRoundBack } from 'react-icons/io';
@@ -13,7 +13,7 @@ import {
   StyledLink,
 } from './MovieDetails.styled';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/movies';
   const { movieId } = useParams();
@@ -67,9 +67,13 @@ export const MovieDetails = () => {
               </li>
             </Box>
           </div>
-          <Outlet />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Outlet />
+          </Suspense>
         </Section>
       )}
     </>
   );
 };
+
+export default MovieDetails;

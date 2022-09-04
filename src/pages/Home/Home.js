@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { getTrending } from 'services/movie-api';
 import { Heading } from './Home.styled';
-import { MoviesGallery } from 'components/MoviesGallery/MoviesGallery';
-import { Section } from 'components/Section/Section';
+import MoviesGallery from 'components/MoviesGallery/MoviesGallery';
+import Section from 'components/Section/Section';
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState(() => []);
 
   useEffect(() => {
@@ -20,3 +20,5 @@ export const Home = () => {
     </Section>
   );
 };
+
+export default Home;

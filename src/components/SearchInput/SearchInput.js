@@ -11,7 +11,7 @@ import {
   Error,
 } from './SearchInput.styled';
 
-export const SearchInput = ({ setMovies }) => {
+const SearchInput = ({ setMovies }) => {
   const {
     register,
     handleSubmit,
@@ -60,3 +60,5 @@ export const SearchInput = ({ setMovies }) => {
 SearchInput.propTypes = {
   setMovies: PropTypes.func.isRequired,
 };
+
+export default SearchInput;

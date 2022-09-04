@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getMovieCreditsById } from 'services/movie-api';
 import { Img } from './Cast.styled';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState(null);
   useEffect(() => {
@@ -41,3 +41,5 @@ export const Cast = () => {
     </Box>
   );
 };
+
+export default Cast;
