@@ -60,10 +60,14 @@ const MovieDetails = () => {
             <Heading4>Additional information</Heading4>
             <Box as="ul" display="flex" gridGap={3}>
               <li>
-                <StyledLink to="cast">Cast</StyledLink>
+                <StyledLink to="cast" state={{ from: backLinkHref }}>
+                  Cast
+                </StyledLink>
               </li>
               <li>
-                <StyledLink to="reviews">Reviews</StyledLink>
+                <StyledLink to="reviews" state={{ from: backLinkHref }}>
+                  Reviews
+                </StyledLink>
               </li>
             </Box>
           </div>
