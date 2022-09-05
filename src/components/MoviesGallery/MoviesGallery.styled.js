@@ -1,7 +1,7 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Card = styled(NavLink)`
+export const Card = styled(Link)`
   display: block;
   text-decoration: none;
   height: 100%;

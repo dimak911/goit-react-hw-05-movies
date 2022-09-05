@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Btn = styled.button`
@@ -20,7 +20,7 @@ export const Btn = styled.button`
   }
 `;
 
-export const StyledLink = styled(NavLink)`
+export const StyledLink = styled(Link)`
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
